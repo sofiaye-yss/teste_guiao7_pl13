@@ -11,7 +11,7 @@ public class Porta {
     public Porta() {}
 
     /** Arromba a porta (definitivo). */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="trancada() || fechada()", to="partida()")
     public void arrombar() {}
 
     /** Destranca a porta; fica fechada. */
@@ -19,14 +19,14 @@ public class Porta {
     public void destrancar() {}
 
     /** Tranca a porta. */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="fechada()", to="trancada()")
     public void trancar() {}
 
     /** Abre a porta. */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="fechada()", to="aberta()")
     public void abrir() {}
 
     /** Fecha a porta. */
-    @StateRefinement(from="true", to="true")
+    @StateRefinement(from="aberta()", to="fechada()")
     public void fechar() {}
 }
